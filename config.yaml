@@ -1,0 +1,28 @@
+config:
+  backup: true
+  create: true
+  dotpath: dotfiles
+dotfiles:
+  f_init.vim:
+    src: config/nvim/init.vim
+    dst: ~/.config/nvim/init.vim
+    link: link
+  f_coc.vim:
+    src: config/nvim/coc.vim
+    dst: ~/.config/nvim/coc.vim
+    link: link
+  f_bashrc:
+    src: bashrc
+    dst: ~/.bashrc
+    link: link
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
+    link: link
+profiles:
+  fnord:
+    dotfiles:
+    - f_init.vim
+    - f_coc.vim
+    - f_bashrc
+    - f_gitconfig
