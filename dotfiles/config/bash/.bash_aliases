@@ -14,4 +14,4 @@ alias vi='nvim'
 alias vim='nvim'
 
 # dotfile aliases
-alias dotfiles='cd ~/.config/dotdrop/'
+alias update-dotfiles='cd ~/.config/dotdrop/ && git add -A && git commit -m "update dotfiles" && git push'
