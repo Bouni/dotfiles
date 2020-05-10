@@ -12,7 +12,7 @@ dotfiles:
     dst: ~/.config/nvim/coc.vim
     link: link
   f_bashrc:
-    src: bashrc
+    src: config/bash/bashrc
     dst: ~/.bashrc
     link: link
   d_xmodmap:
