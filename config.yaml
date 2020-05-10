@@ -15,18 +15,29 @@ dotfiles:
     src: bashrc
     dst: ~/.bashrc
     link: link
-  f_gitconfig:
-    src: gitconfig
-    dst: ~/.gitconfig
+  d_xmodmap:
+    src: config/xmodmap
+    dst: ~/.config/xmodmap
     link: link
-  f_xmodmap:
-    src: Xmodmap
-    dst: ~/.Xmodmap
+  d_bash:
+    src: config/bash
+    dst: ~/.config/bash
+    link: link
+  d_i3:
+    src: config/i3
+    dst: ~/.config/i3
+    link: link
+  d_git:
+    src: config/git
+    dst: ~/.config/git
+    link: link
 profiles:
   fnord:
     dotfiles:
     - f_init.vim
     - f_coc.vim
     - f_bashrc
-    - f_gitconfig
-    - f_xmodmap
+    - d_xmodmap
+    - d_bash
+    - d_i3
+    - d_git
