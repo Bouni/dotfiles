@@ -19,7 +19,8 @@ endif
 
 " List of Plugins
 call plug#begin($VIMHOME . '/plugged')
-
+" VIM wiki                                                                                         
+Plug 'vimwiki/vimwiki'  
 " Asynchronous Lint Engine
 Plug 'w0rp/ale'
 " Color scheme
@@ -55,6 +56,13 @@ Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
+
+" map leader to space                                                                              
+let mapleader=" "                                                                                  
+
+" configure vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',                                                       
+                      \ 'syntax': 'markdown', 'ext': '.md'}]    
 
 " coc config
 let $COC = expand($VIMHOME . '/coc.vim')
