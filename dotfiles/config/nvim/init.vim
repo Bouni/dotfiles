@@ -19,6 +19,8 @@ endif
 
 " List of Plugins
 call plug#begin($VIMHOME . '/plugged')
+" VIM which key
+Plug 'liuchengxu/vim-which-key'
 " VIM wiki                                                                                         
 Plug 'vimwiki/vimwiki'  
 " Asynchronous Lint Engine
@@ -38,7 +40,7 @@ Plug 'godlygeek/tabular'
 " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 Plug 'plasticboy/vim-markdown'
 " The uncompromising Python code formatter
-Plug 'psf/black'
+Plug 'psf/black', { 'tag': '19.10b0' }
 " Vim plugin to sort python imports
 Plug 'fisadev/vim-isort'
 " Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode 
@@ -59,6 +61,12 @@ call plug#end()
 
 " map leader to space                                                                              
 let mapleader=" "                                                                                  
+
+" which key config
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 " configure vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',                                                       
