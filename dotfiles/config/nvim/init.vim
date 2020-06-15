@@ -19,12 +19,18 @@ endif
 
 " List of Plugins
 call plug#begin($VIMHOME . '/plugged')
+" Colorizer, displays colors for hex values and names
+Plug 'norcalli/nvim-colorizer.lua'
 " VIM which key
-Plug 'liuchengxu/vim-which-key'
+"Plug 'liuchengxu/vim-which-key'
 " VIM wiki                                                                                         
-Plug 'vimwiki/vimwiki'  
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' } 
+" Nerdtree
+Plug 'scrooloose/nerdtree'
+" Dev Icons
+Plug 'ryanoasis/vim-devicons'
 " Asynchronous Lint Engine
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 " Color scheme
 Plug 'sheerun/vim-wombat-scheme'
 " Git wrapper
@@ -56,30 +62,22 @@ Plug 'fannheyward/coc-texlab', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-
+" Dispatch.vim for running commands silently in the background
+Plug 'tpope/vim-dispatch'
+" Prettier Plugin
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
+
+" ==============================================================================
+" Global & misc
+" ==============================================================================
 
 " map leader to space                                                                              
 let mapleader=" "                                                                                  
 
-" which key config
-let g:mapleader = "\<Space>"
-let g:maplocalleader = ','
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-
-" configure vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',                                                       
-                      \ 'syntax': 'markdown', 'ext': '.md'}]    
-
-" coc config
-let $COC = expand($VIMHOME . '/coc.vim')
-source $COC
-
 " set my default printer for hardcopy
 set pdev=Samsung_M2070
 
-" set t_Co=256
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0 " 4
@@ -93,19 +91,68 @@ set noswapfile
 set nofoldenable
 set matchpairs=(:),[:],{:},<:>,":",':'
 set mouse=r
+set termguicolors
 
 syntax on
 silent! colorscheme wombat " srcery
 
+nnoremap <silent> <C-left> :tabprev<CR>
+nnoremap <silent> <C-right> :tabnext<CR>
+nnoremap <silent> <A-left> :bprev<CR>
+nnoremap <silent> <A-right> :bnext<CR>
+
+
+
+
+" ==============================================================================
+" Airline
+" ==============================================================================
 let g:airline_theme = 'wombat'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-"let g:airline_left_sep = '»'
-"let g:airline_right_sep = '«'
+
+
+" ==============================================================================
+" NERDTree Config
+" ==============================================================================
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let g:NERDTreeStatusline = ''
+" Automaticaly close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" " Toggle
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
+" ==============================================================================
+" configure vimwiki
+" ==============================================================================
+let g:vimwiki_list = [{'path': '~/vimwiki/',                                                       
+                      \ 'syntax': 'markdown', 'ext': '.md'}]    
+let g:vimwiki_table_mappings=0
+
+" ==============================================================================
+
+" ==============================================================================
+" which key config
+"let g:mapleader = "\<Space>"
+"let g:maplocalleader = ','
+"nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+"nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
+" ==============================================================================
+" COC
+" ==============================================================================
+" coc config
+let $COC = expand($VIMHOME . '/coc.vim')
+source $COC
 
 " Linters for ale plugin
-let b:ale_linters = ['pyflakes', 'flake8', 'pylint']
+" let b:ale_linters = ['pyflakes', 'flake8', 'pylint']
 
+" ==============================================================================
+" 
+" ==============================================================================
 " Clear search highlite with ESC
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
@@ -122,6 +169,12 @@ map <f4> :set invnumber<CR>
 " Enable Paste mode with F5
 set pastetoggle=<f5>
 
+" Rebuild Vue App on F6
+map <f6> :Dispatch yarn run build<CR>
+
+" Prettify on F7
+map <f7> :PrettierAsync
+
 " indent Yaml items correctly
 let g:yaml_formatter_indent_collection=1
 
@@ -129,3 +182,4 @@ let g:yaml_formatter_indent_collection=1
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+lua require'colorizer'.setup()
