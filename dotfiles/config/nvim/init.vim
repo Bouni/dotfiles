@@ -37,7 +37,7 @@ Plug 'godlygeek/tabular'
 " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 Plug 'plasticboy/vim-markdown'
 " The uncompromising Python code formatter
-Plug 'psf/black'
+Plug 'psf/black', { 'tag': '19.10b0' }
 " Vim plugin to sort python imports
 Plug 'fisadev/vim-isort'
 " Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode 
@@ -77,6 +77,7 @@ set noswapfile
 set nofoldenable
 set matchpairs=(:),[:],{:},<:>,":",':'
 set mouse=r
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 syntax on
 silent! colorscheme wombat " srcery
