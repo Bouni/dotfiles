@@ -41,3 +41,10 @@ profiles:
     - d_bash
     - d_i3
     - d_git
+  horus:
+    dotfiles:
+    - f_init.vim
+    - f_coc.vim
+    - f_bashrc
+    - d_bash
+    - d_git

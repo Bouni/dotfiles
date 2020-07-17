@@ -41,6 +41,7 @@ else
     usercolor="$txtgrn"
 fi
 
+eval "$(direnv hook bash)"
 
 PS1="\[$usercolor\]\u\[$hostcolor\]@\h\[$txtrst\] \w $\n"
 
