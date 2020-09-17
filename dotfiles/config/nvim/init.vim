@@ -93,7 +93,9 @@ set noswapfile
 set nofoldenable
 set matchpairs=(:),[:],{:},<:>,":",':'
 set mouse=r
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set termguicolors
+
 
 syntax on
 silent! colorscheme wombat " srcery

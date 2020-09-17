@@ -8,6 +8,9 @@ alias rshell="rshell --buffer-size=30 -p /dev/ttyUSB0"
 # colors for ls
 alias ls='ls --color=auto'
 
+# show octal file permissions
+alias lso='stat -c "%n %a" *'
+
 # vi, vim should always run neovim
 alias v='nvim'
 alias vi='nvim'
