@@ -19,10 +19,12 @@ endif
 
 " List of Plugins
 call plug#begin($VIMHOME . '/plugged')
+" Suda Vim Plugin for sudo write files
+Plug 'lambdalisue/suda.vim'
+" Commenter Plugin
+Plug 'preservim/nerdcommenter'
 " Colorizer, displays colors for hex values and names
 Plug 'norcalli/nvim-colorizer.lua'
-" VIM which key
-"Plug 'liuchengxu/vim-which-key'
 " VIM wiki                                                                                         
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' } 
 " Nerdtree
@@ -182,4 +184,4 @@ let g:yaml_formatter_indent_collection=1
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-lua require'colorizer'.setup()
+lua require 'colorizer'.setup({'*'; css = { names = true }}, {names = false;rgb_fn = true;hsl_fn = true;})
