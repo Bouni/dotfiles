@@ -1,1 +1,0 @@
-# Bouni's dotfiles
