@@ -110,7 +110,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source $HOME/.local/share/lscolors.sh
+source $HOME/.config/lscolors/lscolors.sh
 
 alias ls='ls -G --color'
 
