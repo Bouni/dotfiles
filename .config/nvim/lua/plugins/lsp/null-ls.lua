@@ -27,6 +27,7 @@ null_ls.setup({
 		}), -- python formatter
 		formatting.isort, -- python import sorter
 		formatting.stylua, -- lua formatter
+    formatting.prettier,
 	},
 	-- configure format on save
 	-- on_attach = function(current_client, bufnr)
